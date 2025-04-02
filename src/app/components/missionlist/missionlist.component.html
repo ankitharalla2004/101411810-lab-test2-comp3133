@@ -1,0 +1,17 @@
+<app-missionfilter (yearChanged)="filterByYear($event)"></app-missionfilter>
+
+<div class="missions">
+  <mat-card *ngFor="let mission of missions" class="mission-card" [routerLink]="['/mission', mission.flight_number]">
+    <img mat-card-image [src]="mission.links.mission_patch_small" alt="{{ mission.mission_name }}">
+    <mat-card-title>{{ mission.mission_name }} ({{ mission.launch_year }})</mat-card-title>
+    <mat-card-content>
+      <p><strong>Rocket:</strong> {{ mission.rocket.rocket_name }} ({{ mission.rocket_type }})</p>
+      <p>{{ mission.details || 'No details available.' }}</p>
+      <a [href]="mission.links.article_link" target="_blank" (click)="$event.stopPropagation()">Article</a> |
+      <a [href]="mission.links.wikipedia" target="_blank" (click)="$event.stopPropagation()">Wikipedia</a> |
+      <a [href]="mission.links.video_link" target="_blank" (click)="$event.stopPropagation()">Video</a>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+  
