@@ -1,5 +1,15 @@
+
 <mat-form-field appearance="fill">
     <mat-label>Filter by Launch Year</mat-label>
-    <input matInput (keyup)="onYearChange($event.target.value)" placeholder="e.g., 2020">
+    <input matInput (keyup)="onYearInput($event)" placeholder="e.g., 2020">
+  </mat-form-field>
+  
+  
+  <mat-form-field appearance="fill">
+    <mat-label>Select Launch Year</mat-label>
+    <mat-select (selectionChange)="onYearSelect($event)">
+      <mat-option value="">All Years</mat-option>
+      <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
+    </mat-select>
   </mat-form-field>
   
